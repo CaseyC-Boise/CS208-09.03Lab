@@ -54,3 +54,31 @@ document.addEventListener("DOMContentLoaded", function() {
             jokeDisplay.textContent = joke;
     });
 });
+
+function isStrongPassword(pwd) {
+    if (pwd.toLowerCase().includes("password") || !(pwd.length > 8))
+        return false;
+
+    let isUpper = false;
+    for(let i = 0; i < pwd.length; i++)
+    {
+        if(pwd[i] >= 'A' && pwd[i] <= 'Z')
+        {
+            isUpper = true;
+            break;
+        }
+    }
+    if(!isUpper)
+        return false;
+
+    return true;
+}
+
+function checkPwd() {
+    let pwd = document.getElementById("pwdBox").value;
+    if(isStrongPassword(pwd)) {
+        alert("Password is Acceptable");
+    } else {
+        alert("Password is Invalid");
+    }
+}
